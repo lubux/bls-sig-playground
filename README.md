@@ -43,4 +43,4 @@ cmake . && make
 To start the non-interactive demo, run the `bin/requested_demo` executable.
 The non-interactive demo consider 5 board members with a approval threshold of 3 and processes 50 payment requests.
 
-To start the interactive consol demo, run the `bin/demo_app` executable.
+To start the interactive console demo, run the `bin/demo_app` executable.
