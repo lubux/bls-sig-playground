@@ -35,10 +35,12 @@ set( CMAKE_PREFIX_PATH "${DEPS_INSTALL_ROOT}" )
 
 find_library( GMP_LIBRARY NAMES "gmp" PATHS "${DEPS_INSTALL_ROOT}/lib" )
 find_library( GMPXX_LIBRARY NAMES "gmpxx" PATHS "${DEPS_INSTALL_ROOT}/lib" )
-find_library(SSL_LIB NAMES "ssl" NAMES "ssl" PATHS "${DEPS_INSTALL_ROOT}/lib")
-find_library(CRYPTO_LIB NAMES "crypto" NAMES "ssl" PATHS "${DEPS_INSTALL_ROOT}/lib")
+find_library( SSL_LIB NAMES "ssl" PATHS "${DEPS_INSTALL_ROOT}/lib")
+find_library( CRYPTO_LIB NAMES "crypto"  PATHS "${DEPS_INSTALL_ROOT}/lib")
+find_library( FF_LIB NAMES NAMES "ff" PATHS "${DEPS_INSTALL_ROOT}/lib")
+find_library( PBC_LIB NAMES NAMES "pbc" PATHS "${DEPS_INSTALL_ROOT}/lib")
 
-set( HUNTER_ENABLED OFF )
+set(HUNTER_ENABLED OFF )
 
 option(BUILD_WITH_FPIC "Build with -fPIC" OFF)
 
@@ -51,4 +53,4 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 add_executable(requested_demo demo.cpp bls-demo-util.cpp bls-demo-util.h)
 
-target_link_libraries(requested_demo ff ${BLE_LOC} ${GMPXX_LIBRARY} ${GMP_LIBRARY} ${BOOST_LIBS_4_BLS} ${CRYPTO_LIB} ${SSL_LIB})
+target_link_libraries(requested_demo ${PBC_LIB} ${FF_LIB} ${BLE_LOC} ${GMPXX_LIBRARY} ${GMP_LIBRARY} ${BOOST_LIBS_4_BLS} ${CRYPTO_LIB} ${SSL_LIB})
