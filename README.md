@@ -10,7 +10,7 @@ The payments have to be approved by a subset of the board to be accepted.
 In this repository we demonstrate an example on how to automate this process with threshold signatures. 
 Each member posses a BLS threshold signature private key, which can be used to sign payments with a BLS signature.
 The payment will be accepted by the verifier if upto `t` members have signed the payment request.
-The verifier should only accept the payment the signature can be verified 
+The verifier should only accept the payment if the signature can be verified 
 
 ## Dependencies 
 The code relies on the BLS threshold signature implementation from the [libBLS](https://github.com/skalenetwork/libBLS) library.
