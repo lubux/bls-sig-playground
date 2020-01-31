@@ -30,5 +30,7 @@ find_library( PBC_LIB NAMES NAMES "pbc" PATHS "${DEPS_INSTALL_ROOT}/lib")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -fpermissive -fPIC -std=c++17 -Wno-error=parentheses -Wno-error=char-subscripts -Wno-error=unused-variable -Wno-error=unused-parameter -Wno-error=int-in-bool-context")
 
 add_executable(requested_demo demo.cpp bls-demo-util.cpp bls-demo-util.h)
+add_executable(demo_app consol_app.cpp bls-demo-util.cpp bls-demo-util.h)
 
 target_link_libraries(requested_demo ${BLE_LOC}  ${PBC_LIB} ${FF_LIB} ${GMPXX_LIBRARY} ${GMP_LIBRARY} ${BOOST_LIBS_4_BLS} ${CRYPTO_LIB} ${SSL_LIB})
+target_link_libraries(demo_app ${BLE_LOC}  ${PBC_LIB} ${FF_LIB} ${GMPXX_LIBRARY} ${GMP_LIBRARY} ${BOOST_LIBS_4_BLS} ${CRYPTO_LIB} ${SSL_LIB})

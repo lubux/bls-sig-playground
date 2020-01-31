@@ -31,9 +31,9 @@ int main() {
 
     // Create the board members and distribute them to the board members
     for (size_t i = 0; i < num_all; ++i) {
-        boardMembers.at(i) = move(make_unique<BoardMember>("Member " + to_string(i), i + 1, Skeys->at(i), num_signed, num_all));
+        boardMembers.at(i) = make_unique<BoardMember>("Member " + to_string(i), i + 1, Skeys->at(i), num_signed, num_all);
         cout << boardMembers.at(i)->get_name() << " joins the company board" << endl;
-        cout << "secret share: (DEBUG)" << *boardMembers.at(i)->get_sk_str().get() << endl;
+        cout << "secret share: (DEBUG)" << *boardMembers.at(i)->get_sk_str() << endl;
     }
 
     // generate the payment requests
