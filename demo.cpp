@@ -18,7 +18,7 @@ int main() {
     int num_requests = 50;
 
 
-    vector<BoardMember *> boardMembers(num_all);
+    vector<unique_ptr<BoardMember>> boardMembers(num_all);
 
     // tursted setup of keys
     shared_ptr<pair<shared_ptr<vector<shared_ptr<BLSPrivateKeyShare>>>,
@@ -31,7 +31,7 @@ int main() {
 
     // Create the board members and distribute them to the board members
     for (size_t i = 0; i < num_all; ++i) {
-        boardMembers.at(i) = new BoardMember("Member " + to_string(i), i + 1, Skeys->at(i), num_signed, num_all);
+        boardMembers.at(i) = move(make_unique<BoardMember>("Member " + to_string(i), i + 1, Skeys->at(i), num_signed, num_all));
         cout << boardMembers.at(i)->get_name() << " joins the company board" << endl;
         cout << "secret share: (DEBUG)" << *boardMembers.at(i)->get_sk_str().get() << endl;
     }
@@ -44,6 +44,7 @@ int main() {
 
     // Simulation begins
     for (size_t j = 0; j < num_requests; ++j) {
+        cout << "######################################################################" << endl;
         cout << "ID " << j << ": New Payment ->  " << paymentRequests.at(j) << endl;
         vector<shared_ptr<BLSSigShare>> received_signatures;
 
@@ -86,6 +87,7 @@ int main() {
                 cout << "Verification failed :( " << endl;
             }
         }
+        cout << "######################################################################" << endl;
     }
 
     return 0;
