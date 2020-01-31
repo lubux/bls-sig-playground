@@ -1,0 +1,8 @@
+  
+language: C++
+
+before_script:
+  - bash install-dep-ubuntu.sh
+  - bash setup.sh
+
+script: cmake . && make && ./bin/requested_demo
